@@ -1,0 +1,17 @@
+{
+  "name": "mcp-server-tablestore",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
+    "start": "node build/index.js"
+  },
+  "dependencies": {
+    "@azure/data-tables": "^13.2.2",
+    "@modelcontextprotocol/sdk": "1.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "typescript": "^4.7.4"
+  }
+}
