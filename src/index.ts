@@ -16,6 +16,7 @@ interface QueryTableArgs {
   tableName: string;
   filter?: string;
   select?: string[];
+  limit?: number;
 }
 
 interface GetSchemaArgs {
@@ -59,7 +60,8 @@ class TableStoreServer {
       tools: [
         {
           name: 'query_table',
-          description: 'Query data from an Azure Storage Table with optional filters.\n\n' +
+          description: '⚠️ WARNING: This tool returns a limited subset of results (default: 5 items) to protect the LLM\'s context window. DO NOT increase this limit unless explicitly confirmed by the user.\n\n' +
+            'Query data from an Azure Storage Table with optional filters.\n\n' +
             'Supported OData Filter Examples:\n' +
             '1. Simple equality:\n' +
             '   filter: "PartitionKey eq \'COURSE\'"\n' +
@@ -101,6 +103,11 @@ class TableStoreServer {
                 },
                 description: 'Array of property names to select. Example: ["email", "username", "createdDate"]',
               },
+              limit: {
+                type: 'number',
+                description: 'Maximum number of items to return in response (default: 5). Note: Full query is still executed to get total count.',
+                default: 5
+              }
             },
             required: ['tableName'],
           },
@@ -146,7 +153,8 @@ class TableStoreServer {
             return await this.handleQueryTable({
               tableName: queryArgs.tableName,
               filter: typeof queryArgs.filter === 'string' ? queryArgs.filter : undefined,
-              select: Array.isArray(queryArgs.select) ? queryArgs.select.map(String) : undefined
+              select: Array.isArray(queryArgs.select) ? queryArgs.select.map(String) : undefined,
+              limit: typeof queryArgs.limit === 'number' ? queryArgs.limit : 5
             });
           case 'get_table_schema':
             const schemaArgs = request.params.arguments as Record<string, unknown>;
@@ -206,11 +214,20 @@ class TableStoreServer {
       entities.push(entity);
     }
 
+    // Apply limit in memory to maintain total count
+    const totalItems = entities.length;
+    const limit = args.limit || 5;
+    const limitedEntities = entities.slice(0, limit);
+
     return {
       content: [
         {
           type: 'text',
-          text: JSON.stringify(entities, null, 2),
+          text: JSON.stringify({
+            totalItems,
+            limit,
+            items: limitedEntities
+          }, null, 2),
         },
       ],
     };
