@@ -1,4 +1,5 @@
 # Azure TableStore MCP Server
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A TypeScript-based MCP server that enables interaction with Azure Table Storage directly through Cline. This tool allows you to query and manage data in Azure Storage Tables.
 
@@ -130,3 +131,7 @@ Cline will use the list_tables tool with:
 
 - @azure/data-tables: Azure Table Storage client library
 - @modelcontextprotocol/sdk: MCP server implementation toolkit
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. This means you can use, modify, distribute, and sublicense the code freely, provided you include the original copyright notice and license terms.
