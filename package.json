@@ -1,10 +1,26 @@
 {
-  "name": "mcp-server-tablestore",
-  "version": "0.1.0",
+  "name": "dkmaker-mcp-server-tablestore",
+  "version": "0.2.0",
+  "description": "MCP server for Azure Table Storage interaction",
   "license": "MIT",
   "type": "module",
+  "bin": {
+    "dkmaker-mcp-server-tablestore": "./build/index.js"
+  },
+  "files": [
+    "build",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zenturacp/mcp-azure-tablestorage.git"
+  },
   "scripts": {
-    "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
+    "build": "tsc",
     "start": "node build/index.js"
   },
   "dependencies": {

@@ -31,6 +31,22 @@ npm install
 npm run build
 ```
 
+### NPM Installation
+
+You can install the package globally via npm:
+
+```bash
+npm install -g dkmaker-mcp-server-tablestore
+```
+
+Or run it directly with npx:
+
+```bash
+npx dkmaker-mcp-server-tablestore
+```
+
+Note: When using npx or global installation, you'll still need to configure the AZURE_STORAGE_CONNECTION_STRING environment variable.
+
 ### Installing in Cline
 
 To use the Azure TableStore server with Cline, you need to add it to your MCP settings configuration. The configuration file is located at:

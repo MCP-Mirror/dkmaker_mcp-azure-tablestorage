@@ -32,7 +32,7 @@ class TableStoreServer {
   private connectionString: string;
 
   constructor() {
-    this.connectionString = process.env.CONNECTION_STRING || 'UseDevelopmentStorage=true';
+    this.connectionString = process.env.AZURE_STORAGE_CONNECTION_STRING || 'UseDevelopmentStorage=true';
 
     this.server = new Server(
       {
