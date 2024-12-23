@@ -36,15 +36,15 @@
     "development",
     "typescript"
   ],
-  "author": "zenturacp",
+  "author": "dkmaker",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zenturacp/mcp-azure-tablestorage.git"
+    "url": "git+https://github.com/dkmaker/mcp-azure-tablestorage.git"
   },
   "bugs": {
-    "url": "https://github.com/zenturacp/mcp-azure-tablestorage/issues"
+    "url": "https://github.com/dkmaker/mcp-azure-tablestorage/issues"
   },
-  "homepage": "https://github.com/zenturacp/mcp-azure-tablestorage#readme",
+  "homepage": "https://github.com/dkmaker/mcp-azure-tablestorage#readme",
   "engines": {
     "node": ">=18.0.0"
   }
