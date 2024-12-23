@@ -19,7 +19,7 @@ A TypeScript-based MCP server that enables interaction with Azure Table Storage 
 
 1. Clone the repository:
 ```powershell
-git clone https://github.com/zenturacp/mcp-azure-tablestorage.git
+git clone https://github.com/dkmaker/mcp-azure-tablestorage.git
 cd mcp-azure-tablestorage
 ```
 
